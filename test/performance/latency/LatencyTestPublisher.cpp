@@ -34,7 +34,7 @@ using namespace eprosima::fastrtps::rtps;
 using namespace eprosima::fastrtps::types;
 
 uint32_t dataspub[] = {12, 28, 60, 124, 252, 508, 1020, 2044, 4092, 8188, 16380};
-uint32_t dataspub_large[] = {63996, 131068};
+uint32_t dataspub_large[] = {63996, 131068, 2097152, 4194304};
 
 std::vector<uint32_t> data_size_pub;
 
@@ -203,8 +203,15 @@ bool LatencyTestPublisher::init(
                 break;
             case 131072:
                 output_file_131072_ << "\"Minimum of " << samples_ << " samples (" << str_reliable << ")\",";
-                output_file_131072_ << "\"Average of " << samples_ << " samples (" << str_reliable << ")\"" <<
-                    std::endl;
+                output_file_131072_ << "\"Average of " << samples_ << " samples (" << str_reliable << ")\"" << std::endl;
+                break;
+            case 2097152:
+                output_file_2097152_ << "\"Minimum of " << samples_ << " samples (" << str_reliable << ")\",";
+                output_file_2097152_ << "\"Average of " << samples_ << " samples (" << str_reliable << ")\"" << std::endl;
+                break;
+            case 4194304:
+                output_file_4194304_ << "\"Minimum of " << samples_ << " samples (" << str_reliable << ")\",";
+                output_file_4194304_ << "\"Average of " << samples_ << " samples (" << str_reliable << ")\"" << std::endl;
                 break;
             default:
                 break;
@@ -932,6 +939,12 @@ void LatencyTestPublisher::print_stats(
             break;
         case 131072:
             output_file_131072_ << "\"" << stats.minimum_.count() << "\",\"" << stats.mean_ << "\"" << std::endl;
+            break;
+        case 2097152:
+            output_file_2097152_ << "\"" << stats.minimum_.count() << "\",\"" << stats.mean_ << "\"" << std::endl;
+            break;
+        case 4194304:
+            output_file_4194304_ << "\"" << stats.minimum_.count() << "\",\"" << stats.mean_ << "\"" << std::endl;
             break;
         default:
             break;

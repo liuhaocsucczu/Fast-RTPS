@@ -155,6 +155,8 @@ public:
     std::stringstream output_file_16384_;
     std::stringstream output_file_64000_;
     std::stringstream output_file_131072_;
+    std::stringstream output_file_2097152_;
+    std::stringstream output_file_4194304_;
     std::string xml_config_file_;
     std::string raw_data_file_;
     std::string export_prefix_;

@@ -57,7 +57,7 @@ class LatencyDataType : public eprosima::fastrtps::TopicDataType
         LatencyDataType()
         {
             setName("LatencyType");
-            m_typeSize = 17000;
+            m_typeSize = 1024*1024*10;
             m_isGetKeyDefined = false;
         };
         ~LatencyDataType(){};
